@@ -1,24 +1,10 @@
-import { createFileRoute } from "@tanstack/react-router";
-
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
-export const Route = createFileRoute("/")({
-  component: Index,
+import { createFileRoute, Link } from '@tanstack/react-router';
+import { useQuery } from '@tanstack/react-query';
+import { ArrowUpRight } from 'lucide-react';
+import campaign from '@/assets/zejesh-campaign.jpg';
+import { getProducts } from '@/lib/catalog';
+import { ProductCard } from '@/components/shop';
+export const Route = createFileRoute('/')({
+  head: () => ({ meta: [{ title: 'Zejesh Clothes — The Art of Getting Dressed' }, { name: 'description', content: 'Discover considered clothing for the modern wardrobe. Explore the Zejesh Clothes collection of tailoring, dresses, and enduring essentials.' }, { property: 'og:title', content: 'Zejesh Clothes — The Art of Getting Dressed' }, { property: 'og:description', content: 'Considered clothing for the modern wardrobe. Discover the new edition.' }, { property: 'og:type', content: 'website' }, { name: 'twitter:card', content: 'summary_large_image' }] }), component: Home,
 });
-
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
-function Index() {
-  return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
-  );
-}
+function Home() { const { data: products = [] } = useQuery({ queryKey:['products'], queryFn:getProducts }); return <main><section className="hero"><img src={campaign} alt="The Zejesh editorial collection, modern black tailoring in an architectural space" width={1600} height={1008} fetchPriority="high" /><div className="hero-copy"><span className="hero-eyebrow">ZEJESH / EDITION 01</span><h1>The art of<br />getting dressed.</h1><p>A wardrobe of quiet confidence. Modern forms, considered details, and pieces made to stay.</p><Link className="hero-link" to="/shop" search={{ category:'All', color:'All', sort:'featured', q:'' }}>EXPLORE THE COLLECTION <ArrowUpRight size={17} /></Link></div><div className="hero-bottom"><span>NEW SEASON / 2026</span><span>SCROLL TO DISCOVER ↓</span></div></section><div className="intro-strip"><div>CONSIDERED BY DESIGN</div><div>MADE FOR EVERY MOMENT</div><div>AN EDIT, NOT AN EXCESS</div></div><section className="section-wrap"><div className="section-heading"><div><span className="eyebrow">01 / THE NEW EDITION</span><h2>Objects of desire.</h2><p>Pieces to reach for, again and again.</p></div><Link className="text-link" to="/shop" search={{ category:'All', color:'All', sort:'featured', q:'' }}>VIEW ALL <ArrowUpRight size={15} /></Link></div><div className="product-grid">{products.filter(p => p.featured).map((p,i) => <ProductCard product={p} index={i} key={p.id} />)}</div></section><section className="editorial-band"><span className="eyebrow">THE ZEJESH PERSPECTIVE</span><h2>Less, but infinitely more.</h2><Link className="text-link" to="/about">ENTER OUR WORLD <ArrowUpRight size={15} /></Link></section><section className="section-wrap"><div className="section-heading"><div><span className="eyebrow">02 / WARDROBE NOTES</span><h2>The essentials.</h2><p>Considered foundations for every day.</p></div><Link className="text-link" to="/shop" search={{ category:'All', color:'All', sort:'featured', q:'' }}>SHOP ALL <ArrowUpRight size={15} /></Link></div><div className="product-grid">{products.filter(p => !p.featured).map((p,i) => <ProductCard product={p} index={i} key={p.id} />)}</div></section></main>; }
