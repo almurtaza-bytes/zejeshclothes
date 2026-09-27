@@ -1,0 +1,9 @@
+import { createFileRoute, Link } from '@tanstack/react-router';
+import { useQuery } from '@tanstack/react-query';
+import { ArrowUpRight } from 'lucide-react';
+import { ProductCard } from '@/components/shop';
+import { Button } from '@/components/ui/button';
+import { getProducts } from '@/lib/catalog';
+import { useShop } from '@/lib/shop-context';
+export const Route = createFileRoute('/saved')({ head: () => ({ meta:[{ title:'Saved Pieces — Zejesh Clothes' }, { name:'description', content:'Your favorite pieces from Zejesh Clothes, kept in one place.' }, { property:'og:title', content:'Saved Pieces — Zejesh Clothes' }, { property:'og:description', content:'Your considered collection of favorite Zejesh pieces.' }, { property:'og:type', content:'website' }, { name:'twitter:card', content:'summary_large_image' }] }), component:Saved });
+function Saved() { const { user, authReady, saved } = useShop(); const { data: products = [] } = useQuery({ queryKey:['products'], queryFn:getProducts }); const pieces = products.filter(p => saved.includes(p.id)); return <main className="section-wrap"><div className="page-heading"><span className="eyebrow">YOUR PERSONAL EDIT</span><h1 className="page-title">Saved pieces.</h1></div><div className="pt-10">{!authReady ? <p>Loading…</p> : !user ? <div className="empty-state"><h2>Keep what moves you.</h2><p>Sign in to save pieces you love.</p><Button asChild><Link to="/auth">SIGN IN <ArrowUpRight /></Link></Button></div> : pieces.length ? <div className="product-grid">{pieces.map((p,i) => <ProductCard product={p} index={i} key={p.id} />)}</div> : <div className="empty-state"><h2>Nothing saved yet.</h2><p>Find pieces you want to come back to.</p><Button asChild><Link to="/shop" search={{ category:'All',color:'All',sort:'featured',q:'' }}>EXPLORE THE COLLECTION <ArrowUpRight /></Link></Button></div>}</div></main>; }

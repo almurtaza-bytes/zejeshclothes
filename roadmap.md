@@ -1,6 +1,6 @@
 # Zejesh Clothes build
-- [ ] Premium responsive storefront and product listing
-- [ ] Product detail, size selection, saved items, cart
-- [ ] Account sign-in and checkout experience
-- [ ] Database-backed catalog and customer cart
+- [x] Premium responsive storefront and product listing
+- [x] Product detail, size selection, saved items, cart
+- [x] Account sign-in and checkout experience
+- [x] Database-backed catalog and customer cart
 - [ ] Desktop and mobile verification
