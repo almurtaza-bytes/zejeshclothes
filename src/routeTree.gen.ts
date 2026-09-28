@@ -15,8 +15,10 @@ import { Route as AccountRouteImport } from './routes/account'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as CheckoutRouteImport } from './routes/checkout'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as DressesRouteImport } from './routes/dresses'
 import { Route as SavedRouteImport } from './routes/saved'
 import { Route as ShopRouteImport } from './routes/shop'
+import { Route as TailoringRouteImport } from './routes/tailoring'
 import { Route as ProductSlugRouteImport } from './routes/product.$slug'
 
 const IndexRoute = IndexRouteImport.update({
@@ -49,6 +51,11 @@ const ContactRoute = ContactRouteImport.update({
   path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DressesRoute = DressesRouteImport.update({
+  id: '/dresses',
+  path: '/dresses',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SavedRoute = SavedRouteImport.update({
   id: '/saved',
   path: '/saved',
@@ -57,6 +64,11 @@ const SavedRoute = SavedRouteImport.update({
 const ShopRoute = ShopRouteImport.update({
   id: '/shop',
   path: '/shop',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TailoringRoute = TailoringRouteImport.update({
+  id: '/tailoring',
+  path: '/tailoring',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProductSlugRoute = ProductSlugRouteImport.update({
@@ -72,8 +84,10 @@ export interface FileRoutesByFullPath {
   '/auth': typeof AuthRoute
   '/checkout': typeof CheckoutRoute
   '/contact': typeof ContactRoute
+  '/dresses': typeof DressesRoute
   '/saved': typeof SavedRoute
   '/shop': typeof ShopRoute
+  '/tailoring': typeof TailoringRoute
   '/product/$slug': typeof ProductSlugRoute
 }
 export interface FileRoutesByTo {
@@ -83,8 +97,10 @@ export interface FileRoutesByTo {
   '/auth': typeof AuthRoute
   '/checkout': typeof CheckoutRoute
   '/contact': typeof ContactRoute
+  '/dresses': typeof DressesRoute
   '/saved': typeof SavedRoute
   '/shop': typeof ShopRoute
+  '/tailoring': typeof TailoringRoute
   '/product/$slug': typeof ProductSlugRoute
 }
 export interface FileRoutesById {
@@ -95,8 +111,10 @@ export interface FileRoutesById {
   '/auth': typeof AuthRoute
   '/checkout': typeof CheckoutRoute
   '/contact': typeof ContactRoute
+  '/dresses': typeof DressesRoute
   '/saved': typeof SavedRoute
   '/shop': typeof ShopRoute
+  '/tailoring': typeof TailoringRoute
   '/product/$slug': typeof ProductSlugRoute
 }
 export interface FileRouteTypes {
@@ -108,8 +126,10 @@ export interface FileRouteTypes {
     | '/auth'
     | '/checkout'
     | '/contact'
+    | '/dresses'
     | '/saved'
     | '/shop'
+    | '/tailoring'
     | '/product/$slug'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -119,8 +139,10 @@ export interface FileRouteTypes {
     | '/auth'
     | '/checkout'
     | '/contact'
+    | '/dresses'
     | '/saved'
     | '/shop'
+    | '/tailoring'
     | '/product/$slug'
   id:
     | '__root__'
@@ -130,8 +152,10 @@ export interface FileRouteTypes {
     | '/auth'
     | '/checkout'
     | '/contact'
+    | '/dresses'
     | '/saved'
     | '/shop'
+    | '/tailoring'
     | '/product/$slug'
   fileRoutesById: FileRoutesById
 }
@@ -142,8 +166,10 @@ export interface RootRouteChildren {
   AuthRoute: typeof AuthRoute
   CheckoutRoute: typeof CheckoutRoute
   ContactRoute: typeof ContactRoute
+  DressesRoute: typeof DressesRoute
   SavedRoute: typeof SavedRoute
   ShopRoute: typeof ShopRoute
+  TailoringRoute: typeof TailoringRoute
   ProductSlugRoute: typeof ProductSlugRoute
 }
 
@@ -191,6 +217,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/dresses': {
+      id: '/dresses'
+      path: '/dresses'
+      fullPath: '/dresses'
+      preLoaderRoute: typeof DressesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/saved': {
       id: '/saved'
       path: '/saved'
@@ -203,6 +236,13 @@ declare module '@tanstack/react-router' {
       path: '/shop'
       fullPath: '/shop'
       preLoaderRoute: typeof ShopRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tailoring': {
+      id: '/tailoring'
+      path: '/tailoring'
+      fullPath: '/tailoring'
+      preLoaderRoute: typeof TailoringRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/product/$slug': {
@@ -222,8 +262,10 @@ const rootRouteChildren: RootRouteChildren = {
   AuthRoute: AuthRoute,
   CheckoutRoute: CheckoutRoute,
   ContactRoute: ContactRoute,
+  DressesRoute: DressesRoute,
   SavedRoute: SavedRoute,
   ShopRoute: ShopRoute,
+  TailoringRoute: TailoringRoute,
   ProductSlugRoute: ProductSlugRoute,
 }
 export const routeTree = rootRouteImport
