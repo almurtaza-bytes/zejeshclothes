@@ -1,6 +1,6 @@
 import { Link, useNavigate } from '@tanstack/react-router';
 import { useQuery } from '@tanstack/react-query';
-import { Heart, Search, ShoppingBag, UserRound, Menu, X, ArrowUpRight, Minus, Plus, Trash2 } from 'lucide-react';
+import { Heart, Search, ShoppingBag, UserRound, Menu, ArrowUpRight, Minus, Plus, Trash2 } from 'lucide-react';
 import { useState } from 'react';
 import { toast } from 'sonner';
 import { Button } from '@/components/ui/button';
@@ -14,8 +14,8 @@ export function Header() {
   const navigate = useNavigate();
   const nav = <>
     <Link to="/shop" search={{ category: 'All', color: 'All', sort: 'featured', q: '' }} onClick={() => setMobileOpen(false)}>Shop all</Link>
-    <Link to="/shop" search={{ category: 'Tailoring', color: 'All', sort: 'featured', q: '' }} onClick={() => setMobileOpen(false)}>Tailoring</Link>
-    <Link to="/shop" search={{ category: 'Dresses', color: 'All', sort: 'featured', q: '' }} onClick={() => setMobileOpen(false)}>Dresses</Link>
+    <Link to="/tailoring" onClick={() => setMobileOpen(false)}>Tailoring</Link>
+    <Link to="/dresses" onClick={() => setMobileOpen(false)}>Dresses</Link>
     <Link to="/about" onClick={() => setMobileOpen(false)}>Our world</Link>
   </>;
   return <>

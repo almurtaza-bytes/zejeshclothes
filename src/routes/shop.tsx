@@ -4,7 +4,7 @@ import { Search } from 'lucide-react';
 import { getProducts } from '@/lib/catalog';
 import { ProductCard } from '@/components/shop';
 export const Route = createFileRoute('/shop')({
-  validateSearch: (search: Record<string, unknown>) => ({ category: typeof search.category === 'string' ? search.category : 'All', color: typeof search.color === 'string' ? search.color : 'All', sort: typeof search.sort === 'string' ? search.sort : 'featured', q: typeof search.q === 'string' ? search.q : '' }),
+  validateSearch: (search: Record<string, unknown>) => ({ category: typeof search['category'] === 'string' ? search['category'] : 'All', color: typeof search['color'] === 'string' ? search['color'] : 'All', sort: typeof search['sort'] === 'string' ? search['sort'] : 'featured', q: typeof search['q'] === 'string' ? search['q'] : '' }),
   head: () => ({ meta: [{ title:'Shop the Collection — Zejesh Clothes' }, { name:'description', content:'Explore the Zejesh Clothes collection of modern tailoring, dresses, outerwear, and elevated essentials.' }, { property:'og:title', content:'Shop the Collection — Zejesh Clothes' }, { property:'og:description', content:'Discover considered pieces in the Zejesh Clothes collection.' }, { property:'og:type', content:'website' }, { name:'twitter:card', content:'summary_large_image' }] }), component: Shop,
 });
 function Shop() {
