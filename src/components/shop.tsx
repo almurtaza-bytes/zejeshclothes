@@ -32,7 +32,7 @@ export function Header() {
         </div>
       </div>
     </header>
-    <Sheet open={mobileOpen} onOpenChange={setMobileOpen}><SheetContent side="left" className="mobile-menu"><SheetHeader><SheetTitle className="font-display text-2xl font-normal">ZEJESH</SheetTitle></SheetHeader><nav className="mobile-links">{nav}<Link to="/saved" onClick={() => setMobileOpen(false)}>Saved pieces</Link><Link to={user ? '/account' : '/auth'} onClick={() => setMobileOpen(false)}>Account</Link></nav></SheetContent></Sheet>
+    <Sheet open={mobileOpen} onOpenChange={setMobileOpen}><SheetContent side="left" className="mobile-menu"><SheetHeader><SheetTitle className="font-display text-2xl font-normal">ZEJESH CLOTHES</SheetTitle></SheetHeader><nav className="mobile-links">{nav}<Link to="/saved" onClick={() => setMobileOpen(false)}>Saved pieces</Link><Link to={user ? '/account' : '/auth'} onClick={() => setMobileOpen(false)}>Account</Link></nav></SheetContent></Sheet>
     <CartDrawer open={cartOpen} onOpenChange={setCartOpen} />
   </>;
 }
