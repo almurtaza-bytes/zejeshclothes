@@ -11,3 +11,4 @@
 
 - Zejesh Clothes uses TanStack route pages with Lovable Cloud as the catalog, cart, and identity source because commerce state must persist securely.
 - Product photography is bundled from `src/assets` and matched to products by slug because catalog records should remain portable and image delivery stays optimized by the app build.
+- The single edited white-studio master image is reused for editorial collection storytelling while catalog product photos remain item-specific, so brand imagery stays coherent without misrepresenting products.
