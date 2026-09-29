@@ -1,4 +1,9 @@
 # Zejesh Clothes build
+- [ ] Replace cropped hero with one reusable, white-studio product photograph; no hero tagline
+- [ ] Rebuild Tailoring and Dresses as distinctive luxury editorial shopping pages
+- [ ] Carry screenshot's ZEJESH CLOTHES wordmark through header and brand details
+- [ ] Harmonize product photography and spacing with white studio presentation
+- [ ] Verify all updated pages on phone and desktop
 - [x] Premium responsive storefront and product listing
 - [x] Product detail, size selection, saved items, cart
 - [x] Account sign-in and checkout experience
